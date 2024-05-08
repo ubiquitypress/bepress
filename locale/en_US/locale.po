@@ -29,6 +29,7 @@ msgstr ""
 "\t\t\teditorUsername - the editor to whom imported articles should be assigned; note: this user must have the Journal Editor role and access to the Production stage\n"
 "\t\t\tdefaultEmail - assigned to article metadata when author email not provided in import XML\n"
 "\t\t\timportPath - full filepath to import XML/PDF files (e.g. /home/user/import_files); folder structure must be of the form vol#/iss#/article#\n"
+"\t\t\tgenreKey(optional) - article component (e.g. SUBMISSION, MAN, FIG)\n"
 ""
 
 msgid "plugins.importexport.bepress.importStart"
