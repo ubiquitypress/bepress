@@ -50,7 +50,7 @@ Your OJS install will also need to include the following:
 
 Login to your server and execute the following in your OJS source directory.
 
-`php tools/importExport.php BepressImportPlugin journal username editorUsername defaultEmail importPath`
+`php tools/importExport.php BepressImportPlugin journal username editorUsername defaultEmail importPath genreKey`
 
 where:
 
@@ -59,6 +59,7 @@ where:
 - `editorUsername`: the editor to whom imported articles should be assigned; note: this user must have the Journal Editor role and access to the Production stage
 - `defaultEmail`: assigned to article metadata when author email not provided in import XML
 - `importPath`: full filepath to import bepress files (e.g. /home/user/bepress_xml/journalName)
+- `genreKey` (optional): article component (e.g. SUBMISSION, MAN, FIG)
 
 ### Localization
 This plugin can handle localized fields for a number of elements. To import multilingual articles, journal article metadata must use the [multi-locale document-export format](sample-metadata-multiple-locales.xml). The following fields are currently supported:

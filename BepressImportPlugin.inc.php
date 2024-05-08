@@ -57,7 +57,7 @@ class BepressImportPlugin extends ImportExportPlugin {
 	public function executeCLI($scriptName, &$args)
 	{
 
-		if (sizeof($args) != 5) {
+		if (!in_array(sizeof($args), [5,6])) {
 			$this->usage($scriptName);
 			exit();
 		}
@@ -67,7 +67,7 @@ class BepressImportPlugin extends ImportExportPlugin {
 		$editorUsername = array_shift($args);
 		$defaultEmail = array_shift($args);
 		$directoryName = rtrim(array_shift($args), '/');
-
+		$genreKey = array_shift($args);
 		if (!$journalPath || !$username || !$editorUsername || !$directoryName || !$defaultEmail) {
 			$this->usage($scriptName);
 			exit();
@@ -187,7 +187,8 @@ class BepressImportPlugin extends ImportExportPlugin {
 								$pdfArticleFiles,
 								$volume,
 								$number,
-								$defaultEmail
+								$defaultEmail,
+								$genreKey
 							);
 							$returner = $importDom->importArticle();
 							unset($importDom);

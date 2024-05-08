@@ -36,13 +36,14 @@ class BepressImportDom {
 	private ?string $_volume = null;
 	private ?string $_number = null;
 	private ?string $_defaultEmail = null;
+	private ?string $_genreKey = null;
 	private array $_dependentItems = [];
 	private array $_errors = [];
 
 	/**
 	 * Constructor.
 	 */
-	public function __construct(Journal &$journal, User &$user, User $editor, XMLNode &$xmlArticle, array $pdfPaths, string $volume, string $number, string $defaultEmail)
+	public function __construct(Journal &$journal, User &$user, User $editor, XMLNode &$xmlArticle, array $pdfPaths, string $volume, string $number, string $defaultEmail, string $genreKey = 'SUBMISSION')
 	{
 		$this->_journal = $journal;
 		$this->_user = $user;
@@ -52,6 +53,7 @@ class BepressImportDom {
 		$this->_volume = $volume;
 		$this->_number = $number;
 		$this->_defaultEmail = $defaultEmail;
+		$this->_genreKey = $genreKey;
 	}
 
 	/**
@@ -737,7 +739,7 @@ class BepressImportDom {
 
 		/** @var GenreDAO $genreDao */
 		$genreDao = DAORegistry::getDAO('GenreDAO');
-		$genre = $genreDao->getByKey('SUBMISSION', $this->_journal->getId());
+		$genre = $genreDao->getByKey(strtoupper($this->_genreKey), $this->_journal->getId());
 
 		/** @var SubmissionFileDAO $submissionFileDao */
 		$submissionFileDao = DAORegistry::getDAO('SubmissionFileDAO');
